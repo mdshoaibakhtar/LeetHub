@@ -437,7 +437,234 @@ public class fleetCode
         int extraCandies = 3;
         kidsWith(candies,extraCandies);
     }
+}
+package code.Leet;
+import java.util.ArrayList;
+import java.util.Scanner;
+public class fleetCode
+{
+    static ArrayList<Integer> list(int []arr)
+    {
+        ArrayList<Integer> brr = new ArrayList(10);
+        for(int i:arr)
+        {
+            System.out.println(i);
+        }
+        return brr;
+    }
+    public static void main(String[] args) {
+        ArrayList<Integer> arr = new ArrayList(10);
+        arr.add(10);
+        arr.add(20);
+        arr.add(786);
+//        System.out.println(arr);
+
+        list(arr);
+
+    }
+}
+package code.Leet;
+public class fleetCode
+{
+    static int []shuffle(int []arr,int []indices)
+    {
+        int []res  =new int[arr.length];
+        for(int i=0;i<arr.length;i++)
+        {
+
+            res[indices[i]] = arr[i];
+        }
+
+        for(int i:res)
+        {
+            System.out.print(i+" ");
+        }
+
+        return res;
+    }
+    public static void main(String[] args)
+    {
+        int []arr = {1,2,3,4,5};
+        int []indices = {4,3,1,0,1};
+        shuffle(arr,indices);
+    }
+}
+//1431
+package code.Leet;
+import java.util.ArrayList;
+import java.util.Scanner;
+public class fleetCode
+{
+
+    static ArrayList<Boolean> KidsWithcandies(int []candies,int extraCandies)
+    {
+        ArrayList<Boolean> mylist = new ArrayList<>(candies.length);
+        for(int i=0;i<candies.length;i++)               //2, 3, 5, 1, 3
+        {
+            int t=0;
+            int f=0;
+            int sum = candies[i]+extraCandies; //5
+            for(int j=0;j<candies.length;j++)
+            {
+                if(sum>= candies[j])
+                {
+                    t++;
+                }
+                else
+                {
+                    f++;
+                }
+            }
+            if(f > 0)
+            {
+                mylist.add(false);
+            }
+            else
+            {
+                mylist.add(true);
+            }
+        }
+        System.out.println(mylist);
+        return mylist;
+    }
+    public static void main(String[] args)
+    {
+        int []candies = {2,3,5,1,3};
+        int extraCandies = 3;
+        KidsWithcandies(candies,extraCandies);
+    }
+}
+
+//Q.1389
+package code.Leet;
+public class fleetCode
+{
+
+    static int []createtargetArray(int nums[],int n)
+    {
+        int target[] = new int[nums.length];
+        int inde = 3;
+        for(int i= n-1;i>=inde;i--)
+        {
+//            System.out.println(nums[i]);
+                nums[i-1] = nums[i];
+        }
+        nums[inde] = 786;
+        for(int i:target)
+        {
+            System.out.print(i+" ");
+        }
+
+
+        return target;
+    }
+    public static void main(String[] args) {
+        int []nums = {0,1,2,3,4};
+        int []index = {0,1,2,2,1};
+        int n = 6;
+        createtargetArray(nums,n);
+
+    }
+}
+package code.Leet;
+public class fleetCode
+{
+    static int mostWord(String[] sentence)
+    {
+        int word=0;
+        int max = 0;
+        for(int i=0;i<sentence.length;i++)
+        {
+            word = 0;
+            char ch[] = sentence[i].toCharArray();
+            for(int j=0;j< ch.length-1;j++)
+            {
+               if(ch[j+1] == ' ')
+               {
+                   word++;
+               }
+            }
+            if(word+1 > max)
+            {
+                max = word+1;
+            }
+            else
+            {
+                max = max;
+            }
+        }
+        System.out.println(max);
+        return word;
+    }
+    public static void main(String[] args)
+    {
+        String sentences[] = {"my name is mdshoaib","mera naam mdshoaib","md md md md md md md"};
+        mostWord(sentences);
+
+    }
+}
+package code.Leet;
+public class fleetCode
+{
+    static int numsJewelsinStone(String jewels,String stones)
+    {
+        int count = 0 ;
+        for(int i=0;i<jewels.length();i++)
+        {
+//            count = 0;
+            char []ch = jewels.toCharArray();
+            int val = ch[i];
+            for(int j=0;j<stones.length();j++)
+            {
+                char st[] = stones.toCharArray();
+                int stval = st[j];
+                if(val == stval)
+                {
+                    count++;
+                }
+            }
+//            System.out.println(count);
+        }
+        System.out.println(count);
+
+
+
+
+        return count;
+
+    }
+    public static void main(String[] args)
+    {
+        String jewels = "aaaBBBabBBBb";
+        String stones = "aaBB";
+        numsJewelsinStone(jewels,stones);
+    }
 }*/
+
+package code.Leet;
+public class fleetCode
+{
+    static int []decompress(int []nums)
+    {
+        int res[] = new int[nums.length];
+        for(int i=0;i< nums.length;i++)
+        {
+
+        }
+
+        return res;
+    }
+    public static void main(String[] args) {
+        int []nums = {1,2,3,4};
+        decompress(nums);
+    }
+}
+
+
+
+
+
+
 
 
 
