@@ -640,29 +640,403 @@ public class fleetCode
         numsJewelsinStone(jewels,stones);
     }
 }*/
+/*Happy New Year 2022*/
+//Que - 1313 Decompress Run-Length Encoded List
+/*
+package code.Leet;
 
+import java.util.ArrayList;
+import java.util.List;
+
+public class fleetCode
+{
+    static void decompress(int []nums)
+    {
+        int []res = new int[nums.length];
+        List<Integer> dec = new ArrayList<>();
+        for(int i=0;i<nums.length;i++)
+        {
+            if(i % 2 != 0)
+            {
+                int k = nums[i-1];
+                for(int j=0;j<k;j++)
+                {
+                    res[i-1] = nums[i];
+                    System.out.print(res[i-1]+" ");
+                }
+                k=0;
+            }
+        }
+    }
+    public static void main(String[] args)
+    {
+     System.out.println("Happy new Year 2022");
+     int []nums = {3,3,4,2};
+     decompress(nums);
+    }
+}
+//Que - 2089
+package code.Leet;
+import java.util.ArrayList;
+import java.util.List;
+public class fleetCode
+{
+   static void sorting(int []nums,int target)
+   {
+       int []res = new int[nums.length];
+       List<Integer> targetArr = new ArrayList<>();
+       for(int i=1;i< nums.length-1;i++)            //1,2,5,2,3
+       {
+           if(nums[i-1] > nums[i])
+           {
+               //swap
+               int temp = 0;
+               temp = nums[i-1];
+               nums[i-1] = nums[i];
+               nums[i] = temp;
+
+               res[i] = nums[i];
+           }
+           else
+           {
+               res[i] = nums[i];
+           }
+
+       }
+       for(int i=0;i<nums.length;i++)
+       {
+           if(nums[i] == target)
+           {
+               targetArr.add(i);
+           }
+       }
+
+       System.out.print(targetArr);
+   }
+
+
+    public static void main(String[] args)
+    {
+        int []nums = {1,2,5,2,3};
+        int target = 2;
+        sorting(nums,target);
+    }
+}
 package code.Leet;
 public class fleetCode
 {
-    static int []decompress(int []nums)
+    static void shift(int []arr,int index,int elem,int n)   //1, 2, 4, 5, 6, 8
     {
-        int res[] = new int[nums.length];
-        for(int i=0;i< nums.length;i++)
+        for(int i=n-1;i>=index;i--)
         {
+            arr[i] = arr[i-1];
+        }
+        arr[index] = elem;
+        for(int i:arr)
+        {
+            System.out.print(i+" ");
+        }
+    }
 
+    static int []targetArr(int arr[],int []ind)
+    {
+        int []result = new int[arr.length];
+        boolean []chek = new boolean[arr.length];
+        boolean check = false;
+        for(int i=0;i<arr.length;i++)
+        {
+            result[ind[i]] = arr[i];
         }
 
-        return res;
+
+        for(int i:result)
+        {
+            System.out.print(i+" ");
+        }
+
+
+
+        return result;
     }
-    public static void main(String[] args) {
-        int []nums = {1,2,3,4};
-        decompress(nums);
+    public static void main(String[] args)
+    {
+//        int []arr = {1,2,4,5,6,8};
+//        int n = arr.length;
+//        int index = 2;
+//        int elem = 9;
+//        shift(arr,index,elem,n);
+
+        int []arr = {1,2,3,5};
+        int []ind = {2,0,1,0};
+        targetArr(arr,ind);
+
     }
 }
+package code.Leet;
 
+import java.util.Arrays;
 
+public class fleetCode
+{
+    public static void main(String[] args)
+    {
+        int []arr = {9,8,5,1,6,2};
+        int target = 2;
+        Arrays.sort(arr);
+        for(int i=0;i<arr.length;i++)
+        {
+            System.out.print(arr[i]+" ");
+        }
+        for(int i=0;i<arr.length;i++)
+        {
+            if(target == arr[i])
+            {
+                System.out.println("\n"+i);
+            }
+        }
+    }
+}
+package code.Leet;
+public class fleetCode
+{
+    static void concat(String []word1,String []word2)
+    {
 
+        String neword1 = "";
+        String neword2 = "";
 
+        if(word1.length == word2.length)
+        {
+            for (int i=0;i< word1.length;i++)
+            {
+                     neword1 = neword1+word1[i];
+                     neword2 = neword2+word2[i];
+            }
+            System.out.println(neword1);
+            System.out.println(neword2);
+
+            System.out.println(neword1.equals(neword2));
+        }
+    }
+    public static void main(String[] args) {
+        String []word1 = {"a","bc"};
+        String []word2 = {"ab","c"};
+
+        concat(word1,word2);
+
+    }
+}
+package code.Leet;
+import java.util.Arrays;
+public class fleetCode
+{
+
+    static void maxPro(int []nums)
+    {
+        int maxpro = 0;
+        int pro1 = 0;
+        int pro2 = 0;
+
+        Arrays.sort(nums);
+        for(int i=0;i<nums.length;i++)
+        {
+            System.out.println(nums[i]);
+            if(i == 0)
+            {
+                pro1 = nums[i]*nums[i+1];
+            }
+            if(i== nums.length-2)
+            {
+                pro2 = nums[nums.length-1]*nums[nums.length-2];
+            }
+        }
+
+        maxpro = pro2-pro1;
+        System.out.println(maxpro);
+    }
+    public static void main(String[] args) {
+        int []nums = {4,2,5,9,7,4,8};
+        maxPro(nums);
+    }
+}
+package code.Leet;
+public class fleetCode
+{
+    static boolean check(String newword)
+    {
+        char []ch =newword.toCharArray();
+        int i = 0;
+        int j = newword.length()-1;
+        boolean flag = false;
+        int countf = 0;
+        int countt = 0;
+
+        while(i<j)
+        {
+            int diff = ch[i]-ch[j];
+            if(diff != 0)
+            {
+                countf++;
+                break;
+            }
+            else
+            {
+                countt++;
+            }
+            i++;
+            j--;
+        }
+//        System.out.println(countf);
+//        System.out.println(countt);
+        if(countf < countt){
+            flag = true;
+        }
+        if(countf > countt)
+        {
+            flag = false;
+        }
+
+        return flag;
+    }
+    static void plaindrome(String[] words)
+    {
+        String str = "";
+        for(int i=0;i<words.length;i++)
+        {
+            if(check(words[i]) == true)
+            {
+                str = words[i].toString();
+                break;
+            }
+        }
+        System.out.println(str);
+    }
+    public static void main(String[] args) {
+        String[] words = {"abla","adka","bpbb","raceecar"};
+        plaindrome(words);
+//        System.out.println(check("racecar"));
+
+    }
+}
+package code.Leet;
+public class fleetCode
+{
+    static void traversal(int []arr)
+    {
+        for(int i=0;i<arr.length;i++)
+        {
+            System.out.print(arr[i]+" ");
+        }
+        System.out.println();
+    }
+    static void shift(int []arr,int ele,int ind)
+    {
+        for(int i=arr.length-1;i>ind;i--)
+        {
+            arr[i] = arr[i-1];
+        }
+        arr[ind] = ele;
+    }
+
+    static void targetArr(int []arr,int []index)
+    {
+        int []res = new int[arr.length];
+        boolean[] check = new boolean[arr.length];
+         for(int i=0;i<arr.length;i++)
+        {
+            if(check[index[i]] == false)
+            {
+                res[index[i]] = arr[i];
+                check[index[i]] = true;
+            }
+            else
+            {
+                for(int k=i;k>=index[i];k--)
+                {
+                    res[k] = res[k-1];
+                }
+                res[index[i]] = arr[i];
+            }
+        }
+        traversal(res);
+    }
+    public static void main(String[] args)
+    {
+        int []arr =   {1,2,3,4};
+        int []index = {0,1,1,2};
+        int ele = 5;
+        int ind = 0;
+        traversal(arr);
+        targetArr(arr,index);
+    }
+}
+package code.Leet;
+public class fleetCode
+{
+    static boolean compare(String newword,String s)
+    {
+        char []p = newword.toCharArray();
+        char []q = s.toCharArray();
+        int len = newword.length();
+        int c = 0;
+
+        for(int i=0;i<q.length;i++)
+        {
+            for(int j=0;j<p.length;j++)
+            {
+                if(q[i] == p[j])
+                {
+                    c++;
+                }
+            }
+        }
+
+//        if(c == len)
+//        {
+//            System.out.println("Equal");
+//        }
+        return (c==len);
+    }
+    static void countConsistent(String s,String[] word)
+    {
+        int count =0;
+        for(int i=0;i<word.length;i++)
+        {
+            if(compare(word[i], s))
+            {
+                count++;
+            }
+        }
+        System.out.println(count);
+    }
+    public static void main(String[] args) {
+        String s = "cad";
+        String[] word = {"cc","acd","b","ba","bac","bad","ac","d"};
+        countConsistent(s,word);
+    }
+}
+package code.Leet;
+
+import java.util.Arrays;
+
+public class fleetCode
+{
+    static void truncate(String str,int k)
+    {
+        String []splited = str.split(" ");
+        String trun = "";
+        for(int i=0;i<k;i++)
+        {
+            trun = trun + splited[i]+" ";
+        }
+        System.out.println(trun);
+    }
+    public static void main(String[] args) {
+        String str = "Hello how are you baby";
+        int k = 4;
+        truncate(str,k);
+    }
+}*/
 
 
 
