@@ -918,58 +918,7 @@ public class fleetCode
 
     }
 }
-package code.Leet;
-public class fleetCode
-{
-    static void traversal(int []arr)
-    {
-        for(int i=0;i<arr.length;i++)
-        {
-            System.out.print(arr[i]+" ");
-        }
-        System.out.println();
-    }
-    static void shift(int []arr,int ele,int ind)
-    {
-        for(int i=arr.length-1;i>ind;i--)
-        {
-            arr[i] = arr[i-1];
-        }
-        arr[ind] = ele;
-    }
 
-    static void targetArr(int []arr,int []index)
-    {
-        int []res = new int[arr.length];
-        boolean[] check = new boolean[arr.length];
-         for(int i=0;i<arr.length;i++)
-        {
-            if(check[index[i]] == false)
-            {
-                res[index[i]] = arr[i];
-                check[index[i]] = true;
-            }
-            else
-            {
-                for(int k=i;k>=index[i];k--)
-                {
-                    res[k] = res[k-1];
-                }
-                res[index[i]] = arr[i];
-            }
-        }
-        traversal(res);
-    }
-    public static void main(String[] args)
-    {
-        int []arr =   {1,2,3,4};
-        int []index = {0,1,1,2};
-        int ele = 5;
-        int ind = 0;
-        traversal(arr);
-        targetArr(arr,index);
-    }
-}
 package code.Leet;
 public class fleetCode
 {
@@ -1036,11 +985,401 @@ public class fleetCode
         int k = 4;
         truncate(str,k);
     }
+}
+
+package code.Leet;
+public class fleetCode
+{
+    static void traversal(int []arr)
+    {
+        for(int i=0;i<arr.length;i++)
+        {
+            System.out.print(arr[i]+" ");
+        }
+        System.out.println();
+    }
+    static void shift(int []arr,int ele,int ind)
+    {
+        for(int i=arr.length-1;i>ind;i--)
+        {
+            arr[i] = arr[i-1];
+        }
+        arr[ind] = ele;
+    }
+
+    static void targetArr(int []arr,int []index)
+    {
+        int []res = new int[arr.length];
+        boolean[] check = new boolean[arr.length];
+        for(int i=0;i<arr.length;i++)
+        {
+            if(check[index[i]] == false)
+            {
+                res[index[i]] = arr[i];
+                check[index[i]] = true;
+            }
+            else
+            {
+                for(int k=i;k>=index[i];k--)
+                {
+                    res[k] = res[k-1];
+                }
+                res[index[i]] = arr[i];
+            }
+        }
+        traversal(res);
+    }
+    public static void main(String[] args)
+    {
+        int []arr =   {1,2,3,4,5};
+        int []index = {1,1,0,1,2};
+        int ele = 5;
+        int ind = 0;
+        traversal(arr);
+        targetArr(arr,index);
+    }
+}
+//Coun Good Triplets
+package code.Leet;
+public class fleetCode
+{
+    static void coutnGoodTriplets(int []arr,int a,int b,int c)
+    {
+        int sum= 0;
+        for(int i=0;i<arr.length-2;i++)
+        {
+            for(int j=i+1;j<arr.length-1;j++)
+            {
+                for(int k=j+1;k<arr.length;k++)
+                {
+                    if(Math.abs(arr[i]-arr[j]) <=a && Math.abs(arr[j]-arr[k]) <=b && Math.abs(arr[i]-arr[k])<=c)
+                    {
+                        sum++;
+                    }
+                }
+            }
+        }
+        System.out.println(sum);
+    }
+    public static void main(String[] args)
+    {
+        int []arr = {3,0,1,1,9,7};
+        int a = 7;
+        int b = 2;
+        int c = 3;
+        coutnGoodTriplets(arr,a,b,c);
+    }
+}
+package code.Leet;
+public class fleetCode
+{
+    static void traverse(int [][]img)
+    {
+        for(int i=0;i<img.length;i++)
+        {
+            for (int j = 0; j < img.length; j++)
+            {
+                System.out.print(img[i][j]+" ");
+            }
+            System.out.println();
+        }
+    }
+
+    static void invert(int [][]img)
+    {
+        int [][]invert = new int[img.length][img.length];
+        for(int i=0;i<img.length;i++)
+        {
+            for (int j = 0; j < img.length; j++)
+            {
+                if(img[i][j] == 0)
+                {
+                    invert[i][j] = 1;
+                }
+                else if(img[i][j] == 1)
+                {
+                    invert[i][j] = 0;
+                }
+            }
+        }
+        traverse(invert);
+    }
+
+
+    static void reverse(int [][]img)
+    {
+        int [][]rev = new int[img.length][img.length];
+        for(int i=0;i<img.length;i++)
+        {
+            for (int j=img.length-1,k=0;j>=0 && k<img.length;j--,k++)
+            {
+                rev[i][k] = img[i][j];
+            }
+            System.out.println();
+        }
+        invert(rev);
+    }
+
+    public static void main(String[] args)
+    {
+        int [][]img = {{1,1,0},{1,0,1},{0,0,0}};
+        traverse(img);
+        System.out.println();
+        reverse(img);
+//        invert(img);
+    }
+}
+package code.Leet;
+public class fleetCode
+{
+    static void splitting(String str)
+    {
+        String update  = "";
+        int ind = 0;
+        char []ch = str.toCharArray();
+        for(int i=0;i<str.length();i++)
+        {
+            if(i < str.length()-1)
+            {
+                update = update + ch[i];
+            }
+            else
+            {
+                ind = Character.getNumericValue(ch[i]);
+            }
+        }
+        System.out.println(update);
+        System.out.println(ind);
+    }
+
+
+
+
+    static void splitThechar(String s)
+    {
+        String []str = s.split(" ");
+        String []updatedString = new String[str.length];
+        int []strIndex = new int[str.length];
+        String update  = "";
+        String itsFinalString = "";
+        String finalS[] = new String[str.length];
+        for(int i=0;i<str.length;i++)
+        {
+            update  = "";
+            char []ch = str[i].toCharArray();
+            for(int j=0;j<str[i].length();j++)
+            {
+                if(j < str[i].length()-1)
+                {
+                    update = update + ch[j];
+                }
+                else
+                {
+                    strIndex[i] = Character.getNumericValue(ch[j]);
+                }
+            }
+            updatedString[i] = update;
+        }
+
+           for(int i=0;i<updatedString.length;i++)
+           {
+               finalS[strIndex[i]-1] = updatedString[i];
+           }
+           for(int i=0;i< strIndex.length;i++)
+           {
+                 if(i < strIndex.length-1)
+                 {
+                     itsFinalString += finalS[i] +" ";
+                 }
+                 else
+                 {
+                     itsFinalString += finalS[i];
+                 }
+           }
+        System.out.println(itsFinalString);
+    }
+    public static void main(String[] args)
+    {
+        String s = "my1 akhtar6 md4 is3 shoaib5 name2";
+        splitThechar(s);
+    }
+}
+
+package code.Leet;
+import java.util.Arrays;
+public class fleetCode
+{
+    static int gcd(int a, int b)
+    {
+        if (a == 0)
+            return b;
+        if (b == 0)
+            return a;
+
+        if (a == b)
+            return a;
+
+        if (a > b)
+        {
+            return gcd(a - b, b);
+        }
+        return gcd(a, b-a);
+    }
+
+    static void greatestCd(int []arr)
+    {
+        int a = 0;
+        int b = 0;
+        Arrays.sort(arr);
+        for(int i=0;i<arr.length;i++)
+        {
+            if(i == 0)
+            {
+                a = arr[i];
+            }
+            if(i == arr.length-1)
+            {
+                b= arr[i];
+            }
+        }
+        System.out.println(gcd(a,b));
+    }
+    public static void main(String []args)
+    {
+        int arr[] = {2,4,15,3,6};
+        greatestCd(arr);
+
+    }
+}
+
+
+//        Question No. 1486
+//        Input: n = 5, start = 0
+//        Output: 8
+//        Explanation: Array nums is equal to [0, 2, 4, 6, 8] where (0 ^ 2 ^ 4 ^ 6 ^ 8) = 8.
+//        Where "^" corresponds to bitwise XOR operator.
+
+package code.Leet;
+public class fleetCode
+{
+    static void xorBitwise(int n,int start)
+    {
+        int []arr = new int[n];
+        int ans = 0;
+        for(int i =0;i<n;i++)
+        {
+            if(i == 0)
+            {
+                arr[i] = start;
+            }
+            else
+            {
+                arr[i] = start+2;
+                start += 2;
+            }
+        }
+        for (int i=1;i<arr.length;i++)
+        {
+            ans = ans ^ arr[i];
+        }
+        System.out.println(ans);
+    }
+    public static void main(String[] args) {
+        int n = 5,start = 0;
+        xorBitwise(n,start);
+    }
+}
+//Q. sum of diagonal of the square matrix
+package code.Leet;
+public class fleetCode
+{
+    static void  traverseOfmatrix(int [][]matrix)
+    {
+        for(int i=0;i< matrix.length;i++)
+        {
+            for(int j=0;j<matrix.length;j++)
+            {
+                System.out.print(matrix[i][j]+" ");
+            }
+            System.out.println();
+        }
+    }
+    static void  sumOfmatrix(int [][]matrix)
+    {
+        System.out.println("Diagonals");
+        int diagonals = 0;
+        for(int i=0;i< matrix.length;i++)
+        {
+            for(int j=i;j<=i;j++)
+            {
+                System.out.print(matrix[i][j]+" ");
+                diagonals = diagonals + matrix[i][j];
+            }
+        }
+        System.out.println();
+        int mid = 0;
+        for(int i= 0;i< matrix.length;i++)
+        {
+            for(int j= matrix.length-1-i;j>matrix.length-2-i;j--)
+            {
+                if(matrix.length % 2 == 1)
+                {
+                     mid = matrix.length/2;
+                    if(i != mid && j != mid)
+                    {
+                        System.out.print(matrix[i][j]+" ");
+                        diagonals = diagonals + matrix[i][j];
+                    }
+                }
+
+                else
+                {
+                    System.out.print(matrix[i][j]+" ");
+                    diagonals = diagonals + matrix[i][j];
+                }
+            }
+        }
+        System.out.println("\nSum of Diagonals will be "+diagonals);
+    }
+    public static void main(String[] args)
+    {
+        int [][]matrix = {{4,1,2,3,4,9},{4,1,2,3,4,5},{5,4,4,5,7,7},{8,5,5,1,0,7},{8,9,5,1,0,5},{8,9,5,1,0,4}};
+        traverseOfmatrix(matrix);
+        sumOfmatrix(matrix);
+    }
 }*/
+package code.Leet;
+import java.util.Arrays;
+public class fleetCode
+{
+    static void mergeSort(int []a,int []b)
+    {
+        int []c = new int[a.length+b.length];
+        int i=0;int j=0;int k=0;
+        while(i<a.length)
+        {
+            c[k] = a[i];
+            i++;
+            k++;
+        }
+        while(j<b.length)
+        {
+            c[k] = b[j];
+            j++;k++;
+        }
 
-
-
-
+        Arrays.sort(c);
+        for (int p:c )
+        {
+            System.out.println(p);
+        }
+    }
+    public static void main(String[] args) {
+        int []a = {7,2,6};
+        int []b = {3,4};
+        mergeSort(a,b);
+    }
+}
 
 
 
