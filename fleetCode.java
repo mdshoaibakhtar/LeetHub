@@ -1347,7 +1347,7 @@ public class fleetCode
         traverseOfmatrix(matrix);
         sumOfmatrix(matrix);
     }
-}*/
+}
 package code.Leet;
 import java.util.Arrays;
 public class fleetCode
@@ -1378,6 +1378,88 @@ public class fleetCode
         int []a = {7,2,6};
         int []b = {3,4};
         mergeSort(a,b);
+    }
+}
+//Q.1323
+package code.Leet;
+public class fleetCode
+{
+    static void arrange(int num)
+    {
+        int []res = new int[4];
+        for(int i= res.length-1;i>=0;i--)
+        {
+            res[i] = num % 10;
+            num /= 10;
+        }
+        //traversal
+        for(int i:res)
+        {
+            System.out.print(i+" ");
+        }
+
+        for(int i=0;i<res.length;i++)
+        {
+            if(res[i] != 9)
+            {
+                res[i] = 9;
+                break;
+            }
+        }
+
+        System.out.println();
+        for(int i:res)
+        {
+            System.out.print(i+" ");
+        }
+    }
+    public static void main(String[] args)
+    {
+        int num = 9999;       //9969
+        arrange(num);
+    }
+}*/
+//Q.2K
+package code.Leet;
+public class fleetCode
+{
+    static String rev(String word,int ind)
+    {
+        char arr[] = word.toCharArray();
+        String str = "";
+        for(int i=ind;i>=0;i--)
+        {
+            str= str+arr[i];
+        }
+        return str;
+    }
+
+    static void revPre(String word,char ch)
+    {
+
+        char arr[] = word.toCharArray();
+        String str = "";
+        boolean check = false;
+        for(int i=0;i<word.length();i++)
+        {
+            if(arr[i] == ch && check == false)
+            {
+               str =  rev(word,i);
+                check = true;
+            }
+            else
+            {
+                str = str + arr[i];
+            }
+
+        }
+        System.out.println(str);
+    }
+    public static void main(String[] args)
+    {
+        String word = "xyxzxe";
+        char ch = 'd';
+        revPre(word,ch);
     }
 }
 
