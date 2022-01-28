@@ -1379,6 +1379,164 @@ public class fleetCode
         int []b = {3,4};
         mergeSort(a,b);
     }
+}*/
+/*
+//Q.2K
+package code.Leet;
+public class fleetCode
+{
+    static String rev(String word,int ind)
+    {
+        char arr[] = word.toCharArray();
+        String str = "";
+        for(int i=ind;i>=0;i--)
+        {
+            str= str+arr[i];
+        }
+        return str;
+    }
+
+    static void revPre(String word,char ch)
+    {
+        char arr[] = word.toCharArray();
+        String str = "";
+        boolean check = false;
+        for(int i=0;i<word.length();i++)
+        {
+            if(arr[i] == ch && check == false)
+            {
+               str =  rev(word,i);
+                check = true;
+            }
+            else
+            {
+                str = str + arr[i];
+            }
+        }
+        System.out.println(str);
+    }
+    public static void main(String[] args)
+    {
+        String word = "xyxzxe";
+        char ch = 'd';
+        revPre(word,ch);
+    }
+}
+//Q944
+package code.Leet;
+public class fleetCode
+{
+    static boolean checkSortRec(String s)
+    {
+        char ch[] = s.toCharArray();
+        boolean status = false;
+        for(int i=s.length()-1;i>0;i--)
+        {
+            if((int)ch[i-1] > (int)ch[i])
+            {
+                status = true;
+            }
+            else
+            {
+                status = false;
+                break;
+            }
+        }
+        return status;
+    }
+
+    static boolean checkSort(String s)
+    {
+        char ch[] = s.toCharArray();
+        boolean status = false;
+        for(int i=1;i<s.length();i++)
+        {
+            if((int)ch[i-1] < (int)ch[i])
+            {
+                status = true;
+            }
+            else
+            {
+                status = false;
+                break;
+            }
+        }
+        if(!status)
+        {
+        if(checkSortRec(s))
+        {
+            status = true;
+        }
+        }
+        return status;
+    }
+
+    static void delete(String []str)
+    {
+        int count =0;
+        for(int i=0;i<str.length;i++)
+        {
+            if(!checkSort(str[i]))
+            {
+                count++;
+            }
+
+        }
+        System.out.println(count);
+    }
+    public static void main(String[] args)
+    {
+        String []str = {"cba","wvu","tsr"};
+        delete(str);
+    }
+}
+//1748
+package code.Leet;
+public class fleetCode
+{
+    static void uniqueSum(int []arr)
+    {
+        int sum = 0;
+        for(int i=0;i<arr.length;i++)
+        {
+            for(int j=0;j<arr.length;j++)
+            {
+                if(i != j && arr[i] == arr[j])
+                {
+                    sum = sum  + arr[i];
+                }
+            }
+        }
+        System.out.println(sum);
+    }
+    public static void main(String[] args)
+    {
+        int []arr = {1,2,3,2,3};
+        uniqueSum(arr);
+    }
+}
+//1450
+package code.Leet;
+public class fleetCode
+{
+    static void HomeWork(int []startTime, int []endTime,int queryTime)
+    {
+        int count = 0;
+        for(int i=0;i< startTime.length;i++)
+        {
+            if(startTime[i] > queryTime || endTime[i] > queryTime)
+            {
+                count++;
+            }
+        }
+        System.out.println(count);
+    }
+    public static void main(String[] args) {
+        int []startTime = {1,2,3};
+        int []endTime = {3,2,7};
+        int queryTime = 4;
+        HomeWork(startTime,endTime,queryTime);
+    }
 }
 //Q.1323
 package code.Leet;
@@ -1389,6 +1547,7 @@ public class fleetCode
         int []res = new int[4];
         for(int i= res.length-1;i>=0;i--)
         {
+            //packing the integer in the array
             res[i] = num % 10;
             num /= 10;
         }
@@ -1412,56 +1571,70 @@ public class fleetCode
         {
             System.out.print(i+" ");
         }
+        System.out.println();
+
+        //arr int to integer
+        int h = 1000;
+        int number = 0;
+        for(int i=0;i<res.length;i++)
+        {
+            number = res[i]*h+number;
+            h /= 10;
+        }
+        System.out.println(number);
     }
     public static void main(String[] args)
     {
-        int num = 9999;       //9969
+        int num = 9669;       //9969
         arrange(num);
     }
-}*/
-//Q.2K
+}
+//2119
 package code.Leet;
 public class fleetCode
 {
-    static String rev(String word,int ind)
+    static void isSameAfter(int nums)
     {
-        char arr[] = word.toCharArray();
-        String str = "";
-        for(int i=ind;i>=0;i--)
+        int n1 = nums;
+        int rem = 0;
+        int rev = 0;
+        while(nums > 0)
         {
-            str= str+arr[i];
+            rem = nums % 10;
+            rev = rev * 10 + rem;
+            nums /= 10;
         }
-        return str;
-    }
 
-    static void revPre(String word,char ch)
-    {
-
-        char arr[] = word.toCharArray();
-        String str = "";
-        boolean check = false;
-        for(int i=0;i<word.length();i++)
+        int remainder = 0;
+        int reverse = 0;
+        while(rev>0)
         {
-            if(arr[i] == ch && check == false)
-            {
-               str =  rev(word,i);
-                check = true;
-            }
-            else
-            {
-                str = str + arr[i];
-            }
-
+            remainder = rev % 10;
+            reverse = reverse*10+remainder;
+            rev /= 10;
         }
-        System.out.println(str);
+
+        if(n1 == reverse)
+        {
+            System.out.println(true);
+        }
+        else
+        {
+            System.out.println(false);
+        }
+
     }
     public static void main(String[] args)
     {
-        String word = "xyxzxe";
-        char ch = 'd';
-        revPre(word,ch);
+       int nums = 78960;
+       isSameAfter(nums);
     }
 }
+*/
+
+
+
+
 
 
 
